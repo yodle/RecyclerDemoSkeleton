@@ -45,11 +45,7 @@ public class SurveyActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(survey.getName());
         }
-
-        surveyRecycler.setLayoutManager(new LinearLayoutManager(this));
-        surveyRecycler.setAdapter(new SurveyAdapter(this, survey.getSurveyItems()));
     }
 
     @Override

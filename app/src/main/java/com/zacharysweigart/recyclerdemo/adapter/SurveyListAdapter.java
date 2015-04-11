@@ -20,11 +20,9 @@ import butterknife.InjectView;
 
 public class SurveyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Activity mActivity;
-    private List<Survey> mDataset;
 
-    public SurveyListAdapter(Activity activity, List<Survey> dataset) {
+    public SurveyListAdapter(Activity activity) {
         this.mActivity = activity;
-        this.mDataset = dataset;
     }
 
     @Override
@@ -36,19 +34,14 @@ public class SurveyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        ((SurveyItemViewHolder)viewHolder).setContent(mDataset.get(position), mActivity);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return 0;
     }
 
     public static class SurveyItemViewHolder extends RecyclerView.ViewHolder {
-
-        @InjectView(R.id.survey_list_row_text)
-        TextView rowTextView;
-
         View itemView;
 
         public SurveyItemViewHolder(final View itemView) {
@@ -58,13 +51,6 @@ public class SurveyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void setContent(final Survey survey, final Activity activity) {
-            rowTextView.setText(survey.getName());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.startActivity(SurveyActivity.getIntent(activity, survey));
-                }
-            });
         }
     }
 }

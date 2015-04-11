@@ -13,11 +13,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.zacharysweigart.recyclerdemo.R;
 import com.zacharysweigart.recyclerdemo.adapter.SurveyListAdapter;
-import com.zacharysweigart.recyclerdemo.model.RadioSurveyItem;
-import com.zacharysweigart.recyclerdemo.model.RatingSurveyItem;
 import com.zacharysweigart.recyclerdemo.model.Survey;
 import com.zacharysweigart.recyclerdemo.model.SurveyItem;
-import com.zacharysweigart.recyclerdemo.model.TextSurveyItem;
 import com.zacharysweigart.recyclerdemo.util.SurveyItemDeserializer;
 import com.zacharysweigart.recyclerdemo.view.SurveyItemType;
 
@@ -39,7 +36,7 @@ public class SurveyListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey_list);
         ButterKnife.inject(this);
-        
+
         String appString = "[{\"name\":\"First Survey\",\"surveyItems\":[{\"prompt\":\"Name\",\"type\":\"Text\"},{\"prompt\":\"Age\",\"type\":\"Text\"},{\"options\":[\"Male\",\"female\"],\"prompt\":\"Gender\",\"type\":\"Radio\"},{\"numStars\":5,\"stepSize\":0.5,\"prompt\":\"Rating\",\"type\":\"Rating\"}]},{\"name\":\"Second Survey\",\"surveyItems\":[{\"prompt\":\"What year will you graduate\",\"type\":\"Text\"},{\"prompt\":\"What major are you pursuing\",\"type\":\"Text\"},{\"options\":[\"Grad school\",\"Job\"],\"prompt\":\"What will you be doing after graduation\",\"type\":\"Radio\"}]}]\n";
 
         ActionBar actionBar = getSupportActionBar();
@@ -54,6 +51,6 @@ public class SurveyListActivity extends ActionBarActivity {
         List<Survey> fromCustomGson = gson.fromJson(appString, token);
 
         surveyListRecycler.setLayoutManager(new LinearLayoutManager(this));
-        surveyListRecycler.setAdapter(new SurveyListAdapter(this, fromCustomGson));
+        surveyListRecycler.setAdapter(new SurveyListAdapter(this));
     }
 }
